@@ -8,27 +8,27 @@ import FatalErrorPage from 'src/pages/FatalErrorPage'
 
 import Routes from 'src/Routes'
 
-const auth0 = new Auth0Client({
-  domain: process.env.AUTH0_DOMAIN,
-  client_id: process.env.AUTH0_CLIENT_ID,
-  redirect_uri: process.env.AUTH0_REDIRECT_URI,
-  // ** NOTE ** Storing tokens in browser local storage provides persistence across page refreshes and browser tabs.
-  // However, if an attacker can achieve running JavaScript in the SPA using a cross-site scripting (XSS) attack,
-  // they can retrieve the tokens stored in local storage.
-  // https://auth0.com/docs/libraries/auth0-spa-js#change-storage-options
-  cacheLocation: 'localstorage',
-  audience: process.env.AUTH0_AUDIENCE,
-})
+// const auth0 = new Auth0Client({
+//   domain: process.env.AUTH0_DOMAIN,
+//   client_id: process.env.AUTH0_CLIENT_ID,
+//   redirect_uri: process.env.AUTH0_REDIRECT_URI,
+//   // ** NOTE ** Storing tokens in browser local storage provides persistence across page refreshes and browser tabs.
+//   // However, if an attacker can achieve running JavaScript in the SPA using a cross-site scripting (XSS) attack,
+//   // they can retrieve the tokens stored in local storage.
+//   // https://auth0.com/docs/libraries/auth0-spa-js#change-storage-options
+//   cacheLocation: 'localstorage',
+//   audience: process.env.AUTH0_AUDIENCE,
+// })
 
 ReactDOM.render(
   <FatalErrorBoundary page={FatalErrorPage}>
-    <AuthProvider client={auth0} type="auth0">
-      <RedwoodProvider>
-        <ChakraProvider resetCSS theme={theme}>
-          <Routes />
-        </ChakraProvider>
-      </RedwoodProvider>
-    </AuthProvider>
+    {/* <AuthProvider client={auth0} type="auth0"> */}
+    <RedwoodProvider>
+      <ChakraProvider resetCSS theme={theme}>
+        <Routes />
+      </ChakraProvider>
+    </RedwoodProvider>
+    {/* </AuthProvider> */}
   </FatalErrorBoundary>,
   document.getElementById('redwood-app')
 )
